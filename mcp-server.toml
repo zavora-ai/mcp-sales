@@ -1,0 +1,232 @@
+server_id = "mcp_sales"
+display_name = "Sales"
+version = "1.0.0"
+domain = "sales"
+sdk_version = "0.1.0"
+risk_level = "medium"
+writes_allowed = "gated"
+transports = ["stdio"]
+credentials = ["vault://pandadoc-api-key", "vault://apollo-api-key", "vault://calendly-token", "vault://stripe-secret-key"]
+governance_gates = ["sales-write-policy"]
+environments = ["development", "staging", "production"]
+
+# ─── Proposals (5) ────────────────────────────────────────────────────────────
+
+[[tools]]
+name = "create_proposal"
+description = "Create a new proposal/document in draft state"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = ["vault://pandadoc-api-key"]
+
+[[tools]]
+name = "list_proposals"
+description = "List proposals with optional status filter"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://pandadoc-api-key"]
+
+[[tools]]
+name = "get_proposal"
+description = "Get proposal details including status, recipients, and metadata"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://pandadoc-api-key"]
+
+[[tools]]
+name = "send_proposal"
+description = "Send a draft proposal to recipients for review/signature"
+risk_class = "external_write"
+requires_approval = true
+credential_bindings = ["vault://pandadoc-api-key"]
+
+[[tools]]
+name = "delete_proposal"
+description = "Delete a proposal"
+risk_class = "external_write"
+requires_approval = true
+credential_bindings = ["vault://pandadoc-api-key"]
+
+# ─── Templates (2) ───────────────────────────────────────────────────────────
+
+[[tools]]
+name = "list_templates"
+description = "List available proposal/document templates"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://pandadoc-api-key"]
+
+[[tools]]
+name = "create_from_template"
+description = "Create a new proposal from a template with variable substitution"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = ["vault://pandadoc-api-key"]
+
+# ─── Signatures (3) ──────────────────────────────────────────────────────────
+
+[[tools]]
+name = "request_signature"
+description = "Request e-signature on a sent proposal"
+risk_class = "external_write"
+requires_approval = true
+credential_bindings = ["vault://pandadoc-api-key"]
+
+[[tools]]
+name = "get_signature_status"
+description = "Get signature status for a proposal"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://pandadoc-api-key"]
+
+[[tools]]
+name = "list_signatures"
+description = "List all documents pending or completed signature"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://pandadoc-api-key"]
+
+# ─── Tracking (2) ────────────────────────────────────────────────────────────
+
+[[tools]]
+name = "get_proposal_views"
+description = "Get view/open events for a proposal (who viewed, when, duration)"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://pandadoc-api-key"]
+
+[[tools]]
+name = "get_proposal_analytics"
+description = "Get aggregate analytics for proposals (conversion rates, avg time to sign)"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://pandadoc-api-key"]
+
+# ─── CPQ (4) ─────────────────────────────────────────────────────────────────
+
+[[tools]]
+name = "list_products"
+description = "List products/services from the pricing catalog"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://stripe-secret-key"]
+
+[[tools]]
+name = "calculate_quote"
+description = "Calculate a quote with line items, quantities, and pricing"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://stripe-secret-key"]
+
+[[tools]]
+name = "apply_discount"
+description = "Apply a discount (percentage or fixed) to a quote"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = ["vault://stripe-secret-key"]
+
+[[tools]]
+name = "create_quote"
+description = "Create a formal quote in Stripe (can be sent to customer)"
+risk_class = "external_write"
+requires_approval = true
+credential_bindings = ["vault://stripe-secret-key"]
+
+# ─── Sequences (5) ───────────────────────────────────────────────────────────
+
+[[tools]]
+name = "list_sequences"
+description = "List sales engagement sequences"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://apollo-api-key"]
+
+[[tools]]
+name = "create_sequence"
+description = "Create a new outbound sequence with steps"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = ["vault://apollo-api-key"]
+
+[[tools]]
+name = "enroll_contact"
+description = "Enroll a contact into a sequence"
+risk_class = "external_write"
+requires_approval = true
+credential_bindings = ["vault://apollo-api-key"]
+
+[[tools]]
+name = "pause_sequence"
+description = "Pause a running sequence for a contact"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = ["vault://apollo-api-key"]
+
+[[tools]]
+name = "get_sequence_stats"
+description = "Get performance stats for a sequence (open rate, reply rate, meetings booked)"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://apollo-api-key"]
+
+# ─── Email Tracking (2) ──────────────────────────────────────────────────────
+
+[[tools]]
+name = "send_tracked_email"
+description = "Send a tracked email with open/click tracking"
+risk_class = "external_write"
+requires_approval = true
+credential_bindings = ["vault://apollo-api-key"]
+
+[[tools]]
+name = "get_email_engagement"
+description = "Get engagement data for sent emails (opens, clicks, replies)"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://apollo-api-key"]
+
+# ─── Meetings (3) ────────────────────────────────────────────────────────────
+
+[[tools]]
+name = "get_availability"
+description = "Get available time slots for scheduling a meeting"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://calendly-token"]
+
+[[tools]]
+name = "create_booking_link"
+description = "Create a one-time or reusable booking link"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = ["vault://calendly-token"]
+
+[[tools]]
+name = "list_scheduled_meetings"
+description = "List upcoming and past scheduled meetings"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://calendly-token"]
+
+# ─── Forecasting (3) ─────────────────────────────────────────────────────────
+
+[[tools]]
+name = "get_pipeline_forecast"
+description = "Get weighted pipeline forecast based on deal stages and probabilities"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://pandadoc-api-key", "vault://stripe-secret-key"]
+
+[[tools]]
+name = "get_quota_progress"
+description = "Get quota attainment progress for current period"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://pandadoc-api-key", "vault://stripe-secret-key"]
+
+[[tools]]
+name = "get_win_loss_analysis"
+description = "Get win/loss analysis with reasons and trends"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = ["vault://pandadoc-api-key"]

@@ -1,0 +1,37 @@
+[package]
+name = "mcp-sales"
+version = "1.0.0"
+edition = "2024"
+authors = ["James Karanja <james.karanja@zavora.ai>"]
+description = "Enterprise Sales MCP Server — proposals, CPQ, sequences, meetings, and forecasting with PandaDoc, Apollo.io, Calendly, and Stripe Billing"
+license = "Apache-2.0"
+repository = "https://github.com/zavora-ai/mcp-sales"
+homepage = "https://enterprise.adk-rust.com"
+keywords = ["mcp", "sales", "proposals", "cpq", "pandadoc"]
+categories = ["development-tools", "api-bindings"]
+readme = "README.md"
+
+[features]
+default = ["pandadoc", "stripe-billing"]
+pandadoc = []
+apollo = []
+calendly = []
+stripe-billing = []
+all-backends = ["pandadoc", "apollo", "calendly", "stripe-billing"]
+
+[dependencies]
+adk-mcp-sdk = "0.1"
+rmcp = { version = "1.7", features = ["server", "transport-io", "macros"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+async-trait = "0.1"
+schemars = "1"
+chrono = { version = "0.4", features = ["serde"] }
+dotenvy = "0.15"
+
+[workspace]

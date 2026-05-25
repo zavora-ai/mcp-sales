@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="system-ui,-apple-system,sans-serif" font-size="13">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b"/></linearGradient>
+  </defs>
+  <rect width="900" height="520" fill="url(#bg)" rx="12"/>
+  <text x="450" y="35" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">mcp-sales — Architecture</text>
+
+  <!-- MCP Client -->
+  <rect x="360" y="55" width="180" height="45" rx="8" fill="#7c3aed" opacity="0.9"/>
+  <text x="450" y="83" text-anchor="middle" fill="#fff" font-weight="600">MCP Client (Agent)</text>
+
+  <path d="M450 100 L450 130" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+  <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#94a3b8"/></marker></defs>
+
+  <!-- Server box -->
+  <rect x="100" y="135" width="700" height="170" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="450" y="158" text-anchor="middle" fill="#a78bfa" font-weight="bold" font-size="14">mcp-sales (stdio) — 29 tools</text>
+
+  <!-- Tool categories -->
+  <rect x="120" y="170" width="110" height="28" rx="5" fill="#dc2626" opacity="0.6"/><text x="175" y="189" text-anchor="middle" fill="#fecaca" font-size="11">Proposals (5)</text>
+  <rect x="240" y="170" width="100" height="28" rx="5" fill="#7e22ce" opacity="0.6"/><text x="290" y="189" text-anchor="middle" fill="#e9d5ff" font-size="11">Templates (2)</text>
+  <rect x="350" y="170" width="100" height="28" rx="5" fill="#b45309" opacity="0.6"/><text x="400" y="189" text-anchor="middle" fill="#fde68a" font-size="11">Signatures (3)</text>
+  <rect x="460" y="170" width="90" height="28" rx="5" fill="#334155"/><text x="505" y="189" text-anchor="middle" fill="#94a3b8" font-size="11">Tracking (2)</text>
+  <rect x="560" y="170" width="80" height="28" rx="5" fill="#0d9488" opacity="0.7"/><text x="600" y="189" text-anchor="middle" fill="#ccfbf1" font-size="11">CPQ (4)</text>
+  <rect x="650" y="170" width="120" height="28" rx="5" fill="#1e40af" opacity="0.7"/><text x="710" y="189" text-anchor="middle" fill="#bfdbfe" font-size="11">Sequences (5)</text>
+
+  <rect x="120" y="205" width="120" height="28" rx="5" fill="#065f46" opacity="0.7"/><text x="180" y="224" text-anchor="middle" fill="#6ee7b7" font-size="11">Email Track (2)</text>
+  <rect x="250" y="205" width="100" height="28" rx="5" fill="#f59e0b" opacity="0.5"/><text x="300" y="224" text-anchor="middle" fill="#fde68a" font-size="11">Meetings (3)</text>
+  <rect x="360" y="205" width="110" height="28" rx="5" fill="#3b82f6" opacity="0.5"/><text x="415" y="224" text-anchor="middle" fill="#bfdbfe" font-size="11">Forecasting (3)</text>
+
+  <!-- Lifecycle -->
+  <rect x="120" y="250" width="650" height="35" rx="6" fill="#0f172a" stroke="#334155"/>
+  <text x="145" y="272" fill="#64748b" font-size="10">Lifecycle:</text>
+  <rect x="210" y="257" width="45" height="18" rx="3" fill="#334155"/><text x="232" y="270" text-anchor="middle" fill="#e2e8f0" font-size="9">draft</text>
+  <text x="262" y="270" fill="#64748b" font-size="9">→</text>
+  <rect x="270" y="257" width="40" height="18" rx="3" fill="#dc2626" opacity="0.4"/><text x="290" y="270" text-anchor="middle" fill="#fecaca" font-size="9">sent</text>
+  <text x="317" y="270" fill="#64748b" font-size="9">→</text>
+  <rect x="325" y="257" width="50" height="18" rx="3" fill="#7e22ce" opacity="0.4"/><text x="350" y="270" text-anchor="middle" fill="#e9d5ff" font-size="9">viewed</text>
+  <text x="382" y="270" fill="#64748b" font-size="9">→</text>
+  <rect x="390" y="257" width="65" height="18" rx="3" fill="#b45309" opacity="0.4"/><text x="422" y="270" text-anchor="middle" fill="#fde68a" font-size="9">wait_sign</text>
+  <text x="462" y="270" fill="#64748b" font-size="9">→</text>
+  <rect x="470" y="257" width="50" height="18" rx="3" fill="#065f46" opacity="0.5"/><text x="495" y="270" text-anchor="middle" fill="#6ee7b7" font-size="9">signed</text>
+  <text x="527" y="270" fill="#64748b" font-size="9">→</text>
+  <rect x="535" y="257" width="60" height="18" rx="3" fill="#0d9488" opacity="0.5"/><text x="565" y="270" text-anchor="middle" fill="#ccfbf1" font-size="9">completed</text>
+  <text x="610" y="270" fill="#64748b" font-size="9">|</text>
+  <rect x="620" y="257" width="55" height="18" rx="3" fill="#dc2626" opacity="0.3"/><text x="647" y="270" text-anchor="middle" fill="#fca5a5" font-size="9">declined</text>
+  <rect x="680" y="257" width="50" height="18" rx="3" fill="#334155"/><text x="705" y="270" text-anchor="middle" fill="#64748b" font-size="9">expired</text>
+
+  <!-- Arrows to backends -->
+  <path d="M450 305 L450 330" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M450 330 L160 370" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M450 330 L370 370" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M450 330 L560 370" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4"/>
+  <path d="M450 330 L740 370" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4"/>
+
+  <!-- Backend boxes -->
+  <rect x="60" y="370" width="200" height="75" rx="8" fill="#1e293b" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="160" y="395" text-anchor="middle" fill="#f87171" font-weight="bold" font-size="12">PandaDoc</text>
+  <text x="160" y="413" text-anchor="middle" fill="#94a3b8" font-size="10">Proposals, Templates, Signatures</text>
+  <text x="160" y="428" text-anchor="middle" fill="#64748b" font-size="10">Tracking, Analytics</text>
+  <text x="160" y="440" text-anchor="middle" fill="#475569" font-size="9">API Key auth</text>
+
+  <rect x="280" y="370" width="180" height="75" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="370" y="395" text-anchor="middle" fill="#60a5fa" font-weight="bold" font-size="12">Apollo.io</text>
+  <text x="370" y="413" text-anchor="middle" fill="#94a3b8" font-size="10">Sequences, Email Tracking</text>
+  <text x="370" y="428" text-anchor="middle" fill="#64748b" font-size="10">Engagement Analytics</text>
+  <text x="370" y="440" text-anchor="middle" fill="#475569" font-size="9">API Key auth</text>
+
+  <rect x="480" y="370" width="160" height="75" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="560" y="395" text-anchor="middle" fill="#fbbf24" font-weight="bold" font-size="12">Calendly</text>
+  <text x="560" y="413" text-anchor="middle" fill="#94a3b8" font-size="10">Availability, Booking</text>
+  <text x="560" y="428" text-anchor="middle" fill="#64748b" font-size="10">Scheduled Meetings</text>
+  <text x="560" y="440" text-anchor="middle" fill="#475569" font-size="9">OAuth2 Bearer</text>
+
+  <rect x="660" y="370" width="160" height="75" rx="8" fill="#1e293b" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="740" y="395" text-anchor="middle" fill="#4ade80" font-weight="bold" font-size="12">Stripe Billing</text>
+  <text x="740" y="413" text-anchor="middle" fill="#94a3b8" font-size="10">Products, Quotes, CPQ</text>
+  <text x="740" y="428" text-anchor="middle" fill="#64748b" font-size="10">Forecasting</text>
+  <text x="740" y="440" text-anchor="middle" fill="#475569" font-size="9">Secret Key auth</text>
+
+  <!-- Sales flow -->
+  <rect x="60" y="465" width="760" height="40" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="100" y="489" fill="#94a3b8" font-size="11">Sales Flow:</text>
+  <text x="190" y="489" fill="#60a5fa" font-size="10">Prospect →</text>
+  <text x="270" y="489" fill="#3b82f6" font-size="10">Sequence →</text>
+  <text x="360" y="489" fill="#fbbf24" font-size="10">Meeting →</text>
+  <text x="445" y="489" fill="#4ade80" font-size="10">Quote →</text>
+  <text x="515" y="489" fill="#f87171" font-size="10">Proposal →</text>
+  <text x="610" y="489" fill="#a78bfa" font-size="10">Signature →</text>
+  <text x="710" y="489" fill="#6ee7b7" font-size="10">Won ✓</text>
+</svg>
