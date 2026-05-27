@@ -1,6 +1,6 @@
 [package]
 name = "mcp-sales"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2024"
 authors = ["James Karanja <james.karanja@zavora.ai>"]
 description = "Enterprise Sales MCP Server — proposals, CPQ, sequences, meetings, and forecasting with PandaDoc, Apollo.io, Calendly, and Stripe Billing"
