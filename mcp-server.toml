@@ -1,6 +1,6 @@
 server_id = "mcp_sales"
 display_name = "Sales"
-version = "1.0.1"
+version = "1.1.0"
 domain = "sales"
 sdk_version = "0.2.0"
 risk_level = "high"
