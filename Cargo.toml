@@ -1,7 +1,8 @@
 [package]
 name = "mcp-sales"
-version = "1.0.1"
+version = "1.1.0"
 edition = "2024"
+rust-version = "1.94.1"
 authors = ["James Karanja <james.karanja@zavora.ai>"]
 description = "Enterprise Sales MCP Server — proposals, CPQ, sequences, meetings, and forecasting with PandaDoc, Apollo.io, Calendly, and Stripe Billing"
 license = "Apache-2.0"
@@ -20,7 +21,7 @@ stripe-billing = []
 all-backends = ["pandadoc", "apollo", "calendly", "stripe-billing"]
 
 [dependencies]
-adk-mcp-sdk = "0.1"
+adk-mcp-sdk = { version = "0.2.0", git = "https://github.com/zavora-ai/adk-mcp-sdk.git", rev = "4dac4301441a8a51a042fd66cc1798f0ec3e3f55" }
 rmcp = { version = "3.1.2", features = ["server", "transport-io", "macros"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
