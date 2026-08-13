@@ -2,15 +2,13 @@ server_id = "mcp_sales"
 display_name = "Sales"
 version = "1.0.1"
 domain = "sales"
-sdk_version = "0.1.0"
-risk_level = "medium"
+sdk_version = "0.2.0"
+risk_level = "high"
 writes_allowed = "gated"
 transports = ["stdio"]
 credentials = ["vault://pandadoc-api-key", "vault://apollo-api-key", "vault://calendly-token", "vault://stripe-secret-key"]
-governance_gates = ["sales-write-policy"]
+governance_gates = ["sales-write-policy", "mrtr_approval"]
 environments = ["development", "staging", "production"]
-
-# ─── Proposals (5) ────────────────────────────────────────────────────────────
 
 [[tools]]
 name = "create_proposal"
@@ -47,8 +45,6 @@ risk_class = "external_write"
 requires_approval = true
 credential_bindings = ["vault://pandadoc-api-key"]
 
-# ─── Templates (2) ───────────────────────────────────────────────────────────
-
 [[tools]]
 name = "list_templates"
 description = "List available proposal/document templates"
@@ -62,8 +58,6 @@ description = "Create a new proposal from a template with variable substitution"
 risk_class = "internal_write"
 requires_approval = false
 credential_bindings = ["vault://pandadoc-api-key"]
-
-# ─── Signatures (3) ──────────────────────────────────────────────────────────
 
 [[tools]]
 name = "request_signature"
@@ -86,8 +80,6 @@ risk_class = "read_only"
 requires_approval = false
 credential_bindings = ["vault://pandadoc-api-key"]
 
-# ─── Tracking (2) ────────────────────────────────────────────────────────────
-
 [[tools]]
 name = "get_proposal_views"
 description = "Get view/open events for a proposal (who viewed, when, duration)"
@@ -101,8 +93,6 @@ description = "Get aggregate analytics for proposals (conversion rates, avg time
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = ["vault://pandadoc-api-key"]
-
-# ─── CPQ (4) ─────────────────────────────────────────────────────────────────
 
 [[tools]]
 name = "list_products"
@@ -131,8 +121,6 @@ description = "Create a formal quote in Stripe (can be sent to customer)"
 risk_class = "external_write"
 requires_approval = true
 credential_bindings = ["vault://stripe-secret-key"]
-
-# ─── Sequences (5) ───────────────────────────────────────────────────────────
 
 [[tools]]
 name = "list_sequences"
@@ -169,8 +157,6 @@ risk_class = "read_only"
 requires_approval = false
 credential_bindings = ["vault://apollo-api-key"]
 
-# ─── Email Tracking (2) ──────────────────────────────────────────────────────
-
 [[tools]]
 name = "send_tracked_email"
 description = "Send a tracked email with open/click tracking"
@@ -184,8 +170,6 @@ description = "Get engagement data for sent emails (opens, clicks, replies)"
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = ["vault://apollo-api-key"]
-
-# ─── Meetings (3) ────────────────────────────────────────────────────────────
 
 [[tools]]
 name = "get_availability"
@@ -207,8 +191,6 @@ description = "List upcoming and past scheduled meetings"
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = ["vault://calendly-token"]
-
-# ─── Forecasting (3) ─────────────────────────────────────────────────────────
 
 [[tools]]
 name = "get_pipeline_forecast"

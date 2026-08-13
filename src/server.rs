@@ -97,7 +97,7 @@ pub struct SalesServer {
     pub cpq: Option<Arc<dyn CpqBackend>>,
 }
 
-#[tool_router(server_handler)]
+#[tool_router]
 impl SalesServer {
     // ─── Proposals ───────────────────────────────────────────────────────────
     #[tool(description = "Create a new proposal/document in draft state")]
@@ -237,4 +237,11 @@ impl HealthCheck for SalesServer {
         if self.cpq.is_some() { healthy = true; msg.push("cpq"); }
         HealthStatus { healthy, message: Some(format!("backends: {}", msg.join(", "))), latency_ms: Some(1) }
     }
+}
+
+adk_mcp_sdk::mcp_2026_server! {
+    server: SalesServer,
+    task_tools: ["get_pipeline_forecast"],
+    approval_tools: ["send_proposal", "delete_proposal", "request_signature", "create_quote", "enroll_contact", "send_tracked_email"],
+    cache_ttl_ms: 60_000,
 }
